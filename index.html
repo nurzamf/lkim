@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LKIM – Lembaga Kemajuan Ikan Malaysia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<div class="notification" id="notification"></div>
+<button class="back-to-top" id="backToTop">
+  <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+</button>
+
+<!-- HEADER (Menu floats transparently on top of Hero container, divided into 2 rows) -->
+<header class="header">
+  <!-- TOP ROW (Logo + Quick Links) -->
+  <div class="header-top-row">
+    <div class="logo" onclick="navigate('home')">
+      <img src="https://www.lkim.gov.my/wp-content/uploads/2022/03/cropped-cropped-LKIM-logo-ms-2.png" alt="Fisheries Development Authority of Malaysia Logo" class="logo-img">
+    </div>
+    
+    <div class="header-top-quick">
+      <a href="#" class="quick-link" onclick="showNotif('Opening FAQ…');return false;">
+        <svg class="quick-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+          <text x="12" y="14" font-size="8" font-weight="bold" fill="currentColor" text-anchor="middle" style="stroke:none;">?</text>
+        </svg>
+        <span class="quick-text">FAQ</span>
+      </a>
+      <a href="#" class="quick-link" onclick="navigate('contact');return false;">
+        <svg class="quick-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+        </svg>
+        <span class="quick-text">Contact Us</span>
+      </a>
+      <a href="#" class="quick-link" onclick="showNotif('Opening Feedback & Enquiries…');return false;">
+        <svg class="quick-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+        <span class="quick-text">Feedback &amp; Enquiries</span>
+      </a>
+      <a href="#" class="quick-link" onclick="showNotif('Opening Sitemap…');return false;">
+        <svg class="quick-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="7" height="7"></rect>
+          <rect x="14" y="3" width="7" height="7"></rect>
+          <rect x="14" y="14" width="7" height="7"></rect>
+          <rect x="3" y="14" width="7" height="7"></rect>
+        </svg>
+        <span class="quick-text">Sitemap</span>
+      </a>
+      <div class="search-btn-container">
+        <div class="search-bar-wrapper">
+          <input type="text" id="search-input" class="search-input" placeholder="Search portal..." onkeydown="if(event.key === 'Enter') handleSearchClick()">
+          <button class="search-icon-btn" onclick="toggleSearchBar()">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM ROW (Menu links & Language + Accessibility Options) -->
+  <div class="header-nav-row">
+    <nav class="main-navigation">
+      <div class="nav-item">
+        <button class="nav-link active-nav" onclick="navigate('home')">HOME</button>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" onclick="toggleDropdown('company')">CORPORATE <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="dropdown" id="dropdown-company">
+          <a class="dd-item" href="#">About LKIM</a>
+          <a class="dd-item" href="#">Vision &amp; Mission</a>
+          <a class="dd-item" href="#">Organisation Chart</a>
+          <a class="dd-item" href="#">State Offices</a>
+          <a class="dd-item" href="#">Corporate Info</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" onclick="toggleDropdown('services')">SERVICES <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="dropdown" id="dropdown-services">
+          <a class="dd-item" href="#" onclick="navigate('services');return false;">All Services</a>
+          <a class="dd-item" href="#">Licensing</a>
+          <a class="dd-item" href="#">Online Services</a>
+          <a class="dd-item" href="#">Industry Info</a>
+          <a class="dd-item" href="#">Facilities &amp; Offices</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" onclick="toggleDropdown('fishmarket')">FISH MARKET INFO</button>
+        <div class="dropdown" id="dropdown-fishmarket">
+          <a class="dd-item" href="#">Fish Prices</a>
+          <a class="dd-item" href="#">Market Reports</a>
+          <a class="dd-item" href="#">Landing Statistics</a>
+          <a class="dd-item" href="#">Export Data</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" onclick="toggleDropdown('programmes')">FUNDING &amp; PROGRAMMES <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="dropdown" id="dropdown-programmes">
+          <a class="dd-item" href="#" onclick="navigate('programmes');return false;">All Programmes</a>
+          <a class="dd-item" href="#">e-Dana Fisheries Grant</a>
+          <a class="dd-item" href="#">KUBENA Scheme</a>
+          <a class="dd-item" href="#">KUNITA Programme</a>
+          <a class="dd-item" href="#">Fisherman Subsidy Scheme</a>
+          <a class="dd-item" href="#">Aquaculture Fund</a>
+          <a class="dd-item" href="#">Vessel Modernisation Scheme</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" onclick="toggleDropdown('media')">MEDIA <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="dropdown" id="dropdown-media">
+          <a class="dd-item" href="#" onclick="navigate('news');return false;">News &amp; Announcements</a>
+          <a class="dd-item" href="#">Photo Gallery</a>
+          <a class="dd-item" href="#">Video Gallery</a>
+          <a class="dd-item" href="#">Publications</a>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-link" onclick="navigate('contact')">CONTACT <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+      </div>
+    </nav>
+    
+    <div class="nav-row-right">
+      <div class="nav-item lang-dropdown-container" style="position: relative;">
+        <button class="lang-nav-btn" onclick="toggleDropdown('lang'); event.stopPropagation();">ENGLISH <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="dropdown" id="dropdown-lang" style="right: 0; left: auto; min-width: 150px;">
+          <a class="dd-item" href="#" onclick="changeLanguage('en'); return false;">ENGLISH</a>
+          <a class="dd-item" href="#" onclick="changeLanguage('bm'); return false;">BAHASA MALAYSIA</a>
+        </div>
+      </div>
+      <button class="accessibility-btn" onclick="showNotif('Accessibility settings opened')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;">
+          <circle cx="12" cy="4" r="1.5"></circle>
+          <path d="M10 9.5c0 .8.7 1.5 1.5 1.5h1c.8 0 1.5-.7 1.5-1.5V7c0-.8-.7-1.5-1.5-1.5h-1C10.7 5.5 10 6.2 10 7v2.5z"></path>
+          <path d="M12 11v5m0 0l-3 4m3-4l3 4M8 8.5h8"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════ HOME PAGE ═══════════════════════════════════ -->
+<div class="page active" id="page-home">
+
+  <!-- HERO (Features custom Unsplash background cover and a black overlay) -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Supporting Malaysia's<br>Fisheries Industry</h1>
+      <p>Licensing, market information, funding, infrastructure, and digital services for Malaysia's fisheries community — from coast to table.</p>
+      <div class="hero-btns">
+        <button class="btn btn-primary btn-pill" onclick="navigate('services')">
+          Explore Our Services
+          <svg class="btn-arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;margin-left:6px;"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR SERVICES -->
+  <section class="popular-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title"><span>Popular Services</span></h2>
+        <p class="section-sub">Access LKIM's most frequently used online services.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" onclick="navigate('services');showNotif('Opening Licensing…')">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/><circle cx="16" cy="6" r="1.2" fill="var(--blue)"/></svg>
+          </div>
+          <div class="service-title">LICENSING</div>
+          <div class="service-desc">Apply or renew fishing / aquaculture license</div>
+        </div>
+        <div class="service-card" onclick="showNotif('Opening Industry Info…')">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          </div>
+          <div class="service-title">INDUSTRY INFO</div>
+          <div class="service-desc">Fish prices, reports, market publication</div>
+        </div>
+        <div class="service-card" onclick="navigate('programmes');showNotif('Opening Funding &amp; Programmes…')">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="service-title">FUNDING &amp; PROGRAMMES</div>
+          <div class="service-desc">Fisheries grants, KUNITA and more</div>
+        </div>
+        <div class="service-card" onclick="showNotif('Opening Facilities &amp; Offices…')">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </div>
+          <div class="service-title">FACILITIES &amp; OFFICES</div>
+          <div class="service-desc">Fisheries complexes, jetties and state offices</div>
+        </div>
+        <div class="service-card" onclick="showNotif('Opening Online Services…')">
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+          </div>
+          <div class="service-title">ONLINE SERVICES</div>
+          <div class="service-desc">e-Pendaratan, declaration and more</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHOOSE YOUR PROFILE -->
+  <section class="profile-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title"><span>Choose Your Profile</span></h2>
+        <p class="section-sub">Select your user category to view relevant services and information.</p>
+      </div>
+      <div class="profile-slider-wrap">
+        <div class="profile-track" id="profileTrack">
+          <div class="profile-card" onclick="selectProfile(this,'Fisherman')">
+            <div class="profile-avatar"><img src="https://picsum.photos/84/84?random=20" alt="Fisherman"></div>
+            <div class="profile-name">FISHERMAN</div>
+            <div class="profile-desc">License, subsidies and assistance</div>
+          </div>
+          <div class="profile-card" onclick="selectProfile(this,'Fish Trader')">
+            <div class="profile-avatar"><img src="https://picsum.photos/84/84?random=21" alt="Fish Trader"></div>
+            <div class="profile-name">FISH TRADER</div>
+            <div class="profile-desc">Dealer registration and price info</div>
+          </div>
+          <div class="profile-card" onclick="selectProfile(this,'Entrepreneur')">
+            <div class="profile-avatar"><img src="https://picsum.photos/84/84?random=22" alt="Entrepreneur"></div>
+            <div class="profile-name">ENTREPRENEUR</div>
+            <div class="profile-desc">Grants and business programmes</div>
+          </div>
+          <div class="profile-card" onclick="selectProfile(this,'Aquaculture')">
+            <div class="profile-avatar"><img src="https://picsum.photos/84/84?random=23" alt="Aquaculture"></div>
+            <div class="profile-name">AQUACULTURE</div>
+            <div class="profile-desc">Farm permits, QA and facilities</div>
+          </div>
+          <div class="profile-card" onclick="selectProfile(this,'Researcher')">
+            <div class="profile-avatar"><img src="https://picsum.photos/84/84?random=24" alt="Researcher"></div>
+            <div class="profile-name">RESEARCHER</div>
+            <div class="profile-desc">Data, publications and statistics</div>
+          </div>
+          <div class="profile-card" onclick="selectProfile(this,'General Public')">
+            <div class="profile-avatar"><img src="https://picsum.photos/84/84?random=25" alt="General Public"></div>
+            <div class="profile-name">GENERAL PUBLIC</div>
+            <div class="profile-desc">Community information and citizen portal</div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-nav">
+        <button class="slider-btn" onclick="profileSlide(-1)"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="slider-btn" onclick="profileSlide(1)"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANNER CAROUSEL -->
+  <div class="banner-section">
+    <div class="carousel">
+      <div class="carousel-track" id="carouselTrack">
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?q=80&w=1200&auto=format&fit=crop" alt="NEKMAT">
+          <div class="carousel-overlay">
+            <div class="carousel-content">
+              <h2>PERSATUAN NELAYAN KEBANGSAAN</h2>
+              <p>NEKMAT – Komitmen berterusan menyediakan perkhidmatan terbaik dan membina rantaian bekalan makanan ikan segar beku untuk seluruh negara.</p>
+              <button class="btn btn-white" style="margin-top:20px;" onclick="showNotif('Opening NEKMAT portal…')">Visit NEKMAT</button>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1200&auto=format&fit=crop" alt="MAHA 2026">
+          <div class="carousel-overlay">
+            <div class="carousel-content">
+              <h2>MAHA 2026</h2>
+              <p>Malaysia Agriculture, Horticulture &amp; Agrotourism Show<br>28 Ogos – 6 September 2026 | MAEPS Serdang, Selangor</p>
+              <button class="btn btn-white" style="margin-top:20px;" onclick="showNotif('MAHA 2026 – Register your interest!')">Register Interest</button>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-slide">
+          <img src="https://images.unsplash.com/photo-1534604973900-c43ab4c2e0ab?q=80&w=1200&auto=format&fit=crop" alt="Fresh Fish">
+          <div class="carousel-overlay">
+            <div class="carousel-content">
+              <h2>MyLKIM Fresh Fish Marketplace</h2>
+              <p>Buy premium quality fresh fish direct from fishermen. Lower prices, certified clean and sustainable catch.</p>
+              <button class="btn btn-white" style="margin-top:20px;" onclick="showNotif('Fresh Fish Direct – App Store!')">Download App</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-dots" id="carouselDots">
+        <button class="carousel-dot active" onclick="goToSlide(0)"></button>
+        <button class="carousel-dot" onclick="goToSlide(1)"></button>
+        <button class="carousel-dot" onclick="goToSlide(2)"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- INDUSTRY DASHBOARD -->
+  <section class="dashboard-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title">National Fisheries Dashboard</h2>
+        <p class="section-sub">Latest fisheries statistics from LKIM's national data systems.</p>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Today's Landing (MT)</div>
+          <div class="stat-num" id="stat1">0</div>
+          <div class="stat-change">↑ 3.2% vs yesterday</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Average Fish Price (RM)</div>
+          <div class="stat-num" id="stat2">0<sub>/kg</sub></div>
+          <div class="stat-change">↑ 0.5% this week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Market Activity (RM)</div>
+          <div class="stat-num" id="stat3">0</div>
+          <div class="stat-change down">↓ 1.1% vs last week</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Fisheries Complex</div>
+          <div class="stat-num" id="stat4">0</div>
+          <div class="stat-change">↑ 2 this year</div>
+        </div>
+      </div>
+      <div class="dashboard-cta">
+        <button class="btn btn-teal" onclick="showNotif('Opening Fisheries Statistics portal…')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link-icon lucide-external-link" style="width:16px;height:16px;margin-right:8px;display:inline-block;vertical-align:middle;"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>More Fisheries Statistics</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMMES & FUNDING -->
+  <section>
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title"><span>Programmes &amp; Funding</span></h2>
+        <p class="section-sub">Support schemes and development initiatives for Malaysia's fisheries sector.</p>
+      </div>
+      <div class="programmes-slider-wrap">
+        <div class="programmes-track" id="progTrack">
+          <div class="prog-card" onclick="navigate('programmes')">
+            <div class="prog-img"><img src="https://picsum.photos/400/210?random=40" alt="e-Dana"></div>
+            <div class="prog-body">
+              <div class="prog-title">e-Dana Fisheries Grant</div>
+              <div class="prog-desc">Financial assistance for registered fishermen to purchase fishing gear, equipment, and upgrade vessels.</div>
+              <button class="view-all-btn" onclick="event.stopPropagation();navigate('programmes')">View Program Details →</button>
+            </div>
+          </div>
+          <div class="prog-card" onclick="navigate('programmes')">
+            <div class="prog-img"><img src="https://picsum.photos/400/210?random=41" alt="KUBENA"></div>
+            <div class="prog-body">
+              <div class="prog-title">KUBENA Business Scheme</div>
+              <div class="prog-desc">Support for fisheries-based small businesses including processing, packaging, and marketing ventures.</div>
+              <button class="view-all-btn" onclick="event.stopPropagation();navigate('programmes')">View Program Details →</button>
+            </div>
+          </div>
+          <div class="prog-card" onclick="navigate('programmes')">
+            <div class="prog-img"><img src="https://picsum.photos/400/210?random=42" alt="KUNITA"></div>
+            <div class="prog-body">
+              <div class="prog-title">KUNITA Women's Programme</div>
+              <div class="prog-desc">Dedicated support and training for women in the fisheries industry — from processing to enterprise development.</div>
+              <button class="view-all-btn" onclick="event.stopPropagation();navigate('programmes')">View Program Details →</button>
+            </div>
+          </div>
+          <div class="prog-card" onclick="navigate('programmes')">
+            <div class="prog-img"><img src="https://picsum.photos/400/210?random=43" alt="QFish"></div>
+            <div class="prog-body">
+              <div class="prog-title">QFish Digital Platform</div>
+              <div class="prog-desc">Digital marketplace connecting fishermen to buyers directly, reducing middlemen and increasing fishermen's income.</div>
+              <button class="view-all-btn" onclick="event.stopPropagation();navigate('programmes')">View Program Details →</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="prog-slider-nav">
+        <button class="slider-btn" onclick="progSlide(-1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="slider-btn" onclick="progSlide(1)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWS & ANNOUNCEMENTS -->
+  <section class="bg-offwhite">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title"><span>News &amp; Announcements</span></h2>
+        <p class="section-sub">Latest updates from LKIM and the fisheries industry.</p>
+      </div>
+      <div class="news-grid">
+        <div class="news-featured" onclick="navigate('news')">
+          <div class="news-feat-img"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=600&auto=format&fit=crop" alt="News"></div>
+          <div class="news-feat-body">
+            <div class="news-feat-title">Cadangan menaik taraf pendawaian elektrik dan lampu dekoratif D' Laman LKIM Taman Ekspo Pertanian Malaysia Serdang (MAEPS), Selangor.</div>
+            <span class="read-more">Read Article</span>
+          </div>
+        </div>
+        <div class="news-list">
+          <div class="news-items-wrap">
+            <div class="news-item" onclick="navigate('news')">
+              <div class="news-item-img"><img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=150&auto=format&fit=crop" alt="News"></div>
+              <div class="news-item-body">
+                <div class="news-item-title">Statement of Quotation Offer for the Sale of Used Vehicles LKIM(H): S04/2025 – Reinvitation</div>
+              </div>
+            </div>
+            <div class="news-item" onclick="navigate('news')">
+              <div class="news-item-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=150&auto=format&fit=crop" alt="News"></div>
+              <div class="news-item-body">
+                <div class="news-item-title">Sebutharga LKIM Ibu Pejabat (LKIM:S15/2026) Cadangan kerja-kerja pembinaan bagi Seksyen Sivil</div>
+              </div>
+            </div>
+            <div class="news-item" onclick="navigate('news')">
+              <div class="news-item-img"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=150&auto=format&fit=crop" alt="News"></div>
+              <div class="news-item-body">
+                <div class="news-item-title">Sebutharga LKIM bagi perkhidmatan penyewaan peralatan termasuk pemasangan</div>
+              </div>
+            </div>
+          </div>
+          <div class="news-cta">
+            <button class="view-all-btn" onclick="navigate('news')">View All News →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED AGENCIES -->
+  <section class="agencies-section">
+    <div class="section-inner">
+      <div class="section-header">
+        <h2 class="section-title"><span>Related Agencies</span></h2>
+      </div>
+      <div class="agencies-slider-container">
+        <div class="agencies-slider-wrap">
+          <div class="agencies-track" id="agenciesTrack">
+            <div class="agency-item" onclick="showNotif('Visiting Kementerian Pertanian…')">
+              <div class="agency-logo-box"><img src="https://picsum.photos/80/70?random=60" alt="Kementerian Pertanian"></div>
+              <div class="agency-name">Kementerian Pertanian dan Keterjaminan Makanan</div>
+            </div>
+            <div class="agency-item" onclick="showNotif('Visiting MyGOV…')">
+              <div class="agency-logo-box"><img src="https://picsum.photos/80/70?random=61" alt="MyGOV"></div>
+              <div class="agency-name">MyGOV</div>
+            </div>
+            <div class="agency-item" onclick="showNotif('Visiting Jabatan Perikanan…')">
+              <div class="agency-logo-box"><img src="https://picsum.photos/80/70?random=62" alt="Jabatan Perikanan"></div>
+              <div class="agency-name">Jabatan Perikanan Malaysia</div>
+            </div>
+            <div class="agency-item" onclick="showNotif('Visiting Jabatan Pertanian…')">
+              <div class="agency-logo-box"><img src="https://picsum.photos/80/70?random=63" alt="Jabatan Pertanian"></div>
+              <div class="agency-name">Jabatan Pertanian</div>
+            </div>
+            <div class="agency-item" onclick="showNotif('Visiting Jabatan Perkhidmatan Veterinar…')">
+              <div class="agency-logo-box"><img src="https://picsum.photos/80/70?random=64" alt="Jabatan Perkhidmatan Veterinar"></div>
+              <div class="agency-name">Jabatan Perkhidmatan Veterinar</div>
+            </div>
+            <div class="agency-item" onclick="showNotif('Visiting FAMA…')">
+              <div class="agency-logo-box"><img src="https://picsum.photos/80/70?random=65" alt="FAMA"></div>
+              <div class="agency-name">FAMA</div>
+            </div>
+            <div class="agency-item" onclick="showNotif('Visiting MARDI…')">
+              <div class="agency-logo-box"><img src="https://picsum.photos/80/70?random=66" alt="MARDI"></div>
+              <div class="agency-name">MARDI</div>
+            </div>
+          </div>
+        </div>
+        <button class="slider-btn side-btn prev" onclick="agenciesSlide(-1)" style="left: -15px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="slider-btn side-btn next" onclick="agenciesSlide(1)" style="right: -15px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- ═══════════════════════════════════ SERVICES PAGE ═══════════════════════════════════ -->
+<div class="page" id="page-services">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><span onclick="navigate('home')">Home</span><span class="sep">›</span><span>Services</span></div>
+      <h1>Our Services</h1>
+      <p>Access all of LKIM's online and in-person services for the Malaysian fisheries community.</p>
+    </div>
+  </div>
+  <section>
+    <div class="section-inner">
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterServices(this,'all')">All Services</button>
+        <button class="filter-btn" onclick="filterServices(this,'licensing')">Licensing</button>
+        <button class="filter-btn" onclick="filterServices(this,'financial')">Financial</button>
+        <button class="filter-btn" onclick="filterServices(this,'information')">Information</button>
+        <button class="filter-btn" onclick="filterServices(this,'infrastructure')">Infrastructure</button>
+        <button class="filter-btn" onclick="filterServices(this,'online')">Online</button>
+      </div>
+      <div class="services-full-grid" id="servicesGrid">
+        <div class="service-full-card" data-cat="licensing" onclick="showNotif('Opening Fishing License Application…')">
+          <div class="sf-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <div class="sf-title">Fishing License (New)</div>
+          <div class="sf-desc">Apply for a new commercial fishing license. Processing time: 14 working days.</div>
+        </div>
+        <div class="service-full-card" data-cat="licensing" onclick="showNotif('Opening License Renewal…')">
+          <div class="sf-icon"><svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div>
+          <div class="sf-title">License Renewal</div>
+          <div class="sf-desc">Renew your existing fishing or aquaculture license online.</div>
+        </div>
+        <div class="service-full-card" data-cat="licensing" onclick="showNotif('Opening Aquaculture License…')">
+          <div class="sf-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+          <div class="sf-title">Aquaculture License</div>
+          <div class="sf-desc">Register and license your aquaculture farm operation.</div>
+        </div>
+        <div class="service-full-card" data-cat="financial" onclick="navigate('programmes');showNotif('Opening e-Dana Grant…')">
+          <div class="sf-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+          <div class="sf-title">e-Dana Grant Application</div>
+          <div class="sf-desc">Apply for fisheries financial assistance grants online.</div>
+        </div>
+        <div class="service-full-card" data-cat="financial" onclick="showNotif('Opening Subsidy Registration…')">
+          <div class="sf-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="sf-title">Subsidy Registration</div>
+          <div class="sf-desc">Register for diesel subsidy and other fishermen welfare programmes.</div>
+        </div>
+        <div class="service-full-card" data-cat="financial" onclick="showNotif('Opening Micro-Finance…')">
+          <div class="sf-icon"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+          <div class="sf-title">Micro-Finance Scheme</div>
+          <div class="sf-desc">Low-interest micro-financing for small-scale fishing operators.</div>
+        </div>
+        <div class="service-full-card" data-cat="information" onclick="showNotif('Opening Fish Price Index…')">
+          <div class="sf-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="sf-title">Fish Price Index</div>
+          <div class="sf-desc">Daily fish price data from LKIM complexes nationwide.</div>
+        </div>
+        <div class="service-full-card" data-cat="information" onclick="showNotif('Opening Market Reports…')">
+          <div class="sf-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+          <div class="sf-title">Market Reports</div>
+          <div class="sf-desc">Download weekly and monthly fisheries market reports.</div>
+        </div>
+        <div class="service-full-card" data-cat="infrastructure" onclick="showNotif('Opening Jetty Booking…')">
+          <div class="sf-icon"><svg viewBox="0 0 24 24"><path d="M3 17l9-14 9 14"/><path d="M3 17h18"/></svg></div>
+          <div class="sf-title">Jetty Booking</div>
+          <div class="sf-desc">Reserve berthing and landing space at LKIM jetties.</div>
+        </div>
+        <div class="service-full-card" data-cat="infrastructure" onclick="showNotif('Opening Cold Storage Booking…')">
+          <div class="sf-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg></div>
+          <div class="sf-title">Cold Storage Booking</div>
+          <div class="sf-desc">Book cold storage facilities at LKIM complexes.</div>
+        </div>
+        <div class="service-full-card" data-cat="online" onclick="showNotif('Opening e-Pendaratan…')">
+          <div class="sf-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
+          <div class="sf-title">e-Pendaratan</div>
+          <div class="sf-desc">Submit your daily fish landing declaration online.</div>
+        </div>
+        <div class="service-full-card" data-cat="online" onclick="showNotif('Opening MyLKIM App…')">
+          <div class="sf-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <div class="sf-title">MyLKIM Mobile App</div>
+          <div class="sf-desc">Download the LKIM app for iOS and Android.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════ PROGRAMMES PAGE ═══════════════════════════════════ -->
+<div class="page" id="page-programmes">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><span onclick="navigate('home')">Home</span><span class="sep">›</span><span>Funding &amp; Programmes</span></div>
+      <h1>Funding &amp; Programmes</h1>
+      <p>Support schemes and development initiatives for Malaysia's fisheries sector.</p>
+    </div>
+  </div>
+  <section>
+    <div class="section-inner">
+      <div class="prog-full-grid">
+        <div class="prog-full-card" onclick="showNotif('Opening e-Dana Fisheries Grant…')">
+          <div class="prog-full-img"><img src="https://picsum.photos/400/200?random=70" alt="e-Dana"></div>
+          <div class="prog-full-body">
+            <div class="prog-amount">RM 50,000</div>
+            <div class="prog-amount-label">Maximum grant amount</div>
+            <div class="prog-full-title">e-Dana Fisheries Grant</div>
+            <div class="prog-full-desc">Financial assistance for registered fishermen to purchase fishing gear, upgrade vessels, and enhance operations.</div>
+            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();showNotif('Redirecting to e-Dana application…')">Apply Now</button>
+          </div>
+        </div>
+        <div class="prog-full-card" onclick="showNotif('Opening KUBENA Business Scheme…')">
+          <div class="prog-full-img"><img src="https://picsum.photos/400/200?random=71" alt="KUBENA"></div>
+          <div class="prog-full-body">
+            <div class="prog-amount">RM 200,000</div>
+            <div class="prog-amount-label">Maximum financing</div>
+            <div class="prog-full-title">KUBENA Business Scheme</div>
+            <div class="prog-full-desc">Support for fisheries-based SMEs in processing, packaging, and marketing. Includes business development training.</div>
+            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();showNotif('Redirecting to KUBENA application…')">Apply Now</button>
+          </div>
+        </div>
+        <div class="prog-full-card" onclick="showNotif('Opening KUNITA Women\'s Programme…')">
+          <div class="prog-full-img"><img src="https://picsum.photos/400/200?random=72" alt="KUNITA"></div>
+          <div class="prog-full-body">
+            <div class="prog-amount">RM 30,000</div>
+            <div class="prog-amount-label">Maximum assistance</div>
+            <div class="prog-full-title">KUNITA Women's Programme</div>
+            <div class="prog-full-desc">Dedicated support for women in the fisheries industry including processing, enterprise development, and skills training.</div>
+            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();showNotif('Redirecting to KUNITA application…')">Apply Now</button>
+          </div>
+        </div>
+        <div class="prog-full-card" onclick="showNotif('Opening QFish App information…')">
+          <div class="prog-full-img"><img src="https://picsum.photos/400/200?random=73" alt="QFish"></div>
+          <div class="prog-full-body">
+            <div class="prog-amount">Free</div>
+            <div class="prog-amount-label">Digital platform</div>
+            <div class="prog-full-title">QFish Digital Platform</div>
+            <div class="prog-full-desc">Digital marketplace connecting fishermen to buyers directly, reducing middlemen and increasing income for fishing communities.</div>
+            <button class="btn btn-teal btn-sm" onclick="event.stopPropagation();showNotif('Downloading QFish App…')">Download App</button>
+          </div>
+        </div>
+        <div class="prog-full-card" onclick="showNotif('Opening Boat Engine Replacement…')">
+          <div class="prog-full-img"><img src="https://picsum.photos/400/200?random=74" alt="Enjin Bot"></div>
+          <div class="prog-full-body">
+            <div class="prog-amount">RM 15,000</div>
+            <div class="prog-amount-label">Per unit subsidy</div>
+            <div class="prog-full-title">Boat Engine Replacement</div>
+            <div class="prog-full-desc">Subsidised replacement of old outboard engines with eco-friendly models to reduce fuel consumption and emissions.</div>
+            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();showNotif('Redirecting to engine programme…')">Apply Now</button>
+          </div>
+        </div>
+        <div class="prog-full-card" onclick="showNotif('Opening Fisheries Skills Training…')">
+          <div class="prog-full-img"><img src="https://picsum.photos/400/200?random=75" alt="Training"></div>
+          <div class="prog-full-body">
+            <div class="prog-amount">Free</div>
+            <div class="prog-amount-label">Skills certification</div>
+            <div class="prog-full-title">Fisheries Skills Training</div>
+            <div class="prog-full-desc">Free certified training programmes for fishermen on safety at sea, fish handling, quality control, and aquaculture practices.</div>
+            <button class="btn btn-primary btn-sm" onclick="event.stopPropagation();showNotif('Registering for training…')">Register</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════ NEWS PAGE ═══════════════════════════════════ -->
+<div class="page" id="page-news">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><span onclick="navigate('home')">Home</span><span class="sep">›</span><span>News &amp; Announcements</span></div>
+      <h1>News &amp; Announcements</h1>
+      <p>Stay up to date with the latest news, tenders, and announcements from LKIM.</p>
+    </div>
+  </div>
+  <section>
+    <div class="section-inner">
+      <div class="filter-bar" style="margin-bottom:32px;">
+        <button class="filter-btn active" onclick="filterNews(this,'all')">All</button>
+        <button class="filter-btn" onclick="filterNews(this,'news')">News</button>
+        <button class="filter-btn" onclick="filterNews(this,'tender')">Tenders</button>
+        <button class="filter-btn" onclick="filterNews(this,'announcement')">Announcements</button>
+      </div>
+      <div class="news-full-grid" id="newsGrid">
+        <div class="news-full-card" data-ncat="tender" onclick="showNotif('Reading tender notice…')">
+          <div class="news-full-img"><img src="https://picsum.photos/400/178?random=80" alt="News"></div>
+          <div class="news-full-body">
+            <div class="news-meta"><span class="news-tag-pill">Tender</span><span class="news-date">20 Jun 2025</span></div>
+            <div class="news-full-title">Statement of Quotation Offer for the Sale of Used Vehicles LKIM(H): S04/2025 – Reinvitation</div>
+            <div class="news-full-excerpt">LKIM invites quotations for the sale of used government vehicles. Submissions accepted until 5 July 2025.</div>
+          </div>
+        </div>
+        <div class="news-full-card" data-ncat="tender" onclick="showNotif('Reading tender notice…')">
+          <div class="news-full-img"><img src="https://picsum.photos/400/178?random=81" alt="News"></div>
+          <div class="news-full-body">
+            <div class="news-meta"><span class="news-tag-pill">Tender</span><span class="news-date">18 Jun 2025</span></div>
+            <div class="news-full-title">Sebutharga LKIM Ibu Pejabat (LKIM:S15/2026) Cadangan kerja-kerja pembinaan bagi Seksyen Sivil</div>
+            <div class="news-full-excerpt">Civil construction works at LKIM headquarters. Interested contractors may obtain tender documents from the Procurement Unit.</div>
+          </div>
+        </div>
+        <div class="news-full-card" data-ncat="announcement" onclick="showNotif('Reading announcement…')">
+          <div class="news-full-img"><img src="https://picsum.photos/400/178?random=82" alt="News"></div>
+          <div class="news-full-body">
+            <div class="news-meta"><span class="news-tag-pill" style="color:var(--teal);">Announcement</span><span class="news-date">15 Jun 2025</span></div>
+            <div class="news-full-title">Sebutharga LKIM bagi perkhidmatan penyewaan peralan termasuk pemasangan</div>
+            <div class="news-full-excerpt">LKIM invites quotations for equipment rental services including installation for state offices.</div>
+          </div>
+        </div>
+        <div class="news-full-card" data-ncat="news" onclick="showNotif('Reading article…')">
+          <div class="news-full-img"><img src="https://picsum.photos/400/178?random=83" alt="News"></div>
+          <div class="news-full-body">
+            <div class="news-meta"><span class="news-tag-pill" style="color:#16a34a;">News</span><span class="news-date">10 Jun 2025</span></div>
+            <div class="news-full-title">Cadangan menaik taraf pendawaian elektrik dan lampu dekoratif di Laman LKIM Taman Ekspo Pertanian Malaysia</div>
+            <div class="news-full-excerpt">Upgrading of electrical installations and decorative lighting at LKIM's pavilion for MAHA 2026 is underway.</div>
+          </div>
+        </div>
+        <div class="news-full-card" data-ncat="news" onclick="showNotif('Reading article…')">
+          <div class="news-full-img"><img src="https://picsum.photos/400/178?random=84" alt="News"></div>
+          <div class="news-full-body">
+            <div class="news-meta"><span class="news-tag-pill" style="color:#16a34a;">News</span><span class="news-date">5 Jun 2025</span></div>
+            <div class="news-full-title">LKIM Launches New Digital Landing Declaration System for Fishermen Nationwide</div>
+            <div class="news-full-excerpt">The new e-Pendaratan system goes live in all 186 LKIM complexes, enabling real-time catch data reporting.</div>
+          </div>
+        </div>
+        <div class="news-full-card" data-ncat="announcement" onclick="showNotif('Reading announcement…')">
+          <div class="news-full-img"><img src="https://picsum.photos/400/178?random=85" alt="News"></div>
+          <div class="news-full-body">
+            <div class="news-meta"><span class="news-tag-pill" style="color:var(--teal);">Announcement</span><span class="news-date">1 Jun 2025</span></div>
+            <div class="news-full-title">Notis Permohonan Program e-Dana Suku Ketiga 2025 Kini Dibuka</div>
+            <div class="news-full-excerpt">Applications for the third quarter e-Dana Fisheries Grant are now open. Eligible fishermen may apply online.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════ CONTACT PAGE ═══════════════════════════════════ -->
+<div class="page" id="page-contact">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div class="breadcrumb"><span onclick="navigate('home')">Home</span><span class="sep">›</span><span>Contact Us</span></div>
+      <h1>Contact Us</h1>
+      <p>Get in touch with LKIM. Our team is ready to assist you.</p>
+    </div>
+  </div>
+  <section>
+    <div class="section-inner">
+      <div class="contact-grid">
+        <div>
+          <div class="contact-info-card">
+            <div class="contact-icon-row">
+              <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+              <div><h3>Headquarters</h3><p>Ibu Pejabat LKIM, Aras 5 Wisma LKIM,<br>Jalan Desaria, Pulau Meranti,<br>47120 Puchong, Selangor</p></div>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-icon-row">
+              <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+              <div><h3>Phone &amp; Fax</h3><p>Telefon: 03- 8064 9000<br>Faks: 03-8060 3713</p></div>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-icon-row">
+              <div class="ci-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+              <div><h3>Email</h3><p>lkim@lkim.gov.my<br>helpdesk@lkim.gov.my</p></div>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="contact-icon-row">
+              <div class="ci-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+              <div><h3>Office Hours</h3><p>Monday – Friday: 8:00 AM – 5:00 PM<br>Saturday, Sunday &amp; Public Holidays: Closed</p></div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <h2>Send Us a Message</h2>
+          <div class="form-row">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="Ahmad" id="fname"></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Abdullah" id="lname"></div>
+          </div>
+          <div class="form-group"><label>Email Address</label><input type="email" placeholder="ahmad@example.com" id="email"></div>
+          <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+601X-XXX XXXX" id="phone"></div>
+          <div class="form-group">
+            <label>Category</label>
+            <select id="category">
+              <option value="">Select a category</option>
+              <option>Licensing Enquiry</option>
+              <option>Grant Application</option>
+              <option>Technical Support</option>
+              <option>General Enquiry</option>
+              <option>Complaint / Feedback</option>
+            </select>
+          </div>
+          <div class="form-group"><label>Message</label><textarea placeholder="Type your message here…" id="message"></textarea></div>
+          <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="submitForm()">Send Message</button>
+          <div class="form-success" id="formSuccess">✓ Your message has been sent! We'll respond within 2 working days.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer id="siteFooter" style="background: linear-gradient(90deg, #012C59 0%, #035EBF 100%); border: none;">
+  <div class="footer-main">
+    <div class="footer-grid">
+      <!-- 1. CONTACT US -->
+      <div>
+        <div class="footer-heading" style="color: #ffffff; font-size: 13.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px;">CONTACT US</div>
+        <div class="footer-contact" style="color: rgba(255,255,255,0.85); font-size: 13px; line-height: 1.6; margin-top: 14px;">
+          <p style="margin-bottom:12px;">Ibu Pejabat LKIM, Aras 5 Wisma LKIM, Jalan Desaria, Pulau Meranti, 47120 Puchong, Selangor</p>
+          <p style="margin-bottom:8px;">
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:middle;margin-right:6px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Call : +603-8064 9000 / +603-8060 3726
+          </p>
+          <p>
+            <svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;display:inline-block;vertical-align:middle;margin-right:6px;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email : lkim@lkim.gov.my
+          </p>
+        </div>
+      </div>
+      <!-- 2. RESOURCES -->
+      <div>
+        <div class="footer-heading" style="color: #ffffff; font-size: 13.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px;">RESOURCES</div>
+        <ul class="footer-links" style="margin-top: 14px;">
+          <li><a href="#" onclick="showNotif('Opening Downloads…')">Downloads</a></li>
+          <li><a href="#" onclick="showNotif('Opening Publications…')">Publications</a></li>
+          <li><a href="#" onclick="showNotif('Opening Statistics…')">Statistics</a></li>
+          <li><a href="#" onclick="showNotif('Opening Research Data…')">Research Data</a></li>
+          <li><a href="#" onclick="showNotif('Opening Open Data…')">Open Data</a></li>
+        </ul>
+      </div>
+      <!-- 3. STAFF LINK -->
+      <div>
+        <div class="footer-heading" style="color: #ffffff; font-size: 13.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px;">STAFF LINK</div>
+        <ul class="footer-links" style="margin-top: 14px;">
+          <li><a href="#" onclick="showNotif('Opening Web Mail…')">Web Mail</a></li>
+          <li><a href="#" onclick="showNotif('Opening Intranet…')">Intranet</a></li>
+          <li><a href="#" onclick="showNotif('Opening MyHRMIS Mobile…')">MyHRMIS Mobile</a></li>
+        </ul>
+      </div>
+      <!-- 4. GENERAL -->
+      <div>
+        <div class="footer-heading" style="color: #ffffff; font-size: 13.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px;">GENERAL</div>
+        <ul class="footer-links" style="margin-top: 14px;">
+          <li><a href="#" onclick="showNotif('Penafian / Disclaimer')">Disclaimer</a></li>
+          <li><a href="#" onclick="showNotif('Terma Penggunaan / Terms of Use')">Term of Use</a></li>
+          <li><a href="#" onclick="showNotif('Dasar Privasi / Privacy Policy')">Privacy Policy</a></li>
+          <li><a href="#" onclick="showNotif('Dasar Keselamatan / Security Policy')">Security Policy</a></li>
+          <li><a href="#" onclick="showNotif('Peta Laman / Sitemap')">Sitemap</a></li>
+        </ul>
+      </div>
+      <!-- 5. VISITOR COUNTER -->
+      <div>
+        <div class="footer-heading" style="color: #ffffff; font-size: 13.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px;">VISITOR COUNTER</div>
+        <div style="margin-top: 14px; margin-bottom: 14px;">
+          <div class="visitor-dot-row" style="display: flex; align-items: flex-end; justify-content: space-between; font-size: 12px; color: #ffffff; margin-bottom: 8px;">
+            <span style="padding-right: 2px;">Today</span>
+            <span style="flex-grow: 1; border-bottom: 1.5px dotted rgba(255,255,255,0.3); margin: 0 4px; margin-bottom: 4px;"></span>
+            <span style="padding-left: 2px; color: #ffffff; font-weight: 700;" id="visToday">1,435</span>
+          </div>
+          <div class="visitor-dot-row" style="display: flex; align-items: flex-end; justify-content: space-between; font-size: 12px; color: #ffffff; margin-bottom: 8px;">
+            <span style="padding-right: 2px;">Yesterday</span>
+            <span style="flex-grow: 1; border-bottom: 1.5px dotted rgba(255,255,255,0.3); margin: 0 4px; margin-bottom: 4px;"></span>
+            <span style="padding-left: 2px; color: #ffffff; font-weight: 700;">452</span>
+          </div>
+          <div class="visitor-dot-row" style="display: flex; align-items: flex-end; justify-content: space-between; font-size: 12px; color: #ffffff; margin-bottom: 8px;">
+            <span style="padding-right: 2px;">This Week</span>
+            <span style="flex-grow: 1; border-bottom: 1.5px dotted rgba(255,255,255,0.3); margin: 0 4px; margin-bottom: 4px;"></span>
+            <span style="padding-left: 2px; color: #ffffff; font-weight: 700;">29,383</span>
+          </div>
+          <div class="visitor-dot-row" style="display: flex; align-items: flex-end; justify-content: space-between; font-size: 12px; color: #ffffff; margin-bottom: 8px;">
+            <span style="padding-right: 2px;">This Month</span>
+            <span style="flex-grow: 1; border-bottom: 1.5px dotted rgba(255,255,255,0.3); margin: 0 4px; margin-bottom: 4px;"></span>
+            <span style="padding-left: 2px; color: #ffffff; font-weight: 700;">47,588</span>
+          </div>
+          <div class="visitor-dot-row" style="display: flex; align-items: flex-end; justify-content: space-between; font-size: 12px; color: #ffffff; margin-bottom: 12px;">
+            <span style="padding-right: 2px;">Total</span>
+            <span style="flex-grow: 1; border-bottom: 1.5px dotted rgba(255,255,255,0.3); margin: 0 4px; margin-bottom: 4px;"></span>
+            <span style="padding-left: 2px; color: #ffffff; font-weight: 700;">1,435,315</span>
+          </div>
+        </div>
+        <div style="font-size: 11px; color: rgba(255,255,255,0.65); text-align: left; padding-left: 2px;">
+          Last Updated: 24 June 2025
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom" style="background: #ffffff; border: none; padding: 24px 0;">
+    <div class="footer-bottom-inner" style="display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:auto;padding:0 24px;flex-wrap:wrap;gap:20px;">
+      <!-- Left side text -->
+      <div style="text-align: left; font-size: 12.5px; line-height: 1.6; color: #4b5563;">
+        <div style="margin: 0; font-weight: 500;">Best viewed using latest version of Mozilla Firefox and Google Chrome  with screen resolution 1366 x 768</div>
+        <div style="margin: 4px 0 0 0; font-weight: 600; color: #011E3D;">Copyright &copy; 2026 Lembaga Kemajuan Ikan Malaysia</div>
+      </div>
+      
+      <!-- Right side follow us & social media icons -->
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;">
+        <span style="font-size: 13.5px; font-weight: 700; color: #011E3D;">Follow us</span>
+        <div class="social-links" style="display: flex; gap: 8px;">
+          <a href="#" onclick="showNotif('Opening Facebook…')" style="width: 34px; height: 34px; border-radius: 50%; background: #0152A9; color: #ffffff; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; text-decoration: none;" class="social-icon-btn">
+            <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: currentColor;"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="#" onclick="showNotif('Opening Instagram…')" style="width: 34px; height: 34px; border-radius: 50%; background: #0152A9; color: #ffffff; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; text-decoration: none;" class="social-icon-btn">
+            <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" onclick="showNotif('Opening X / Twitter…')" style="width: 34px; height: 34px; border-radius: 50%; background: #0152A9; color: #ffffff; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; text-decoration: none;" class="social-icon-btn">
+            <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: currentColor;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" onclick="showNotif('Opening YouTube…')" style="width: 34px; height: 34px; border-radius: 50%; background: #0152A9; color: #ffffff; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; text-decoration: none;" class="social-icon-btn">
+            <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: currentColor;"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.54C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="/script.js" defer></script>
+</body>
+</html>
