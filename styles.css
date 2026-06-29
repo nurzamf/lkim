@@ -576,7 +576,7 @@ section {
   border: 2px solid transparent;
   transition: all 0.25s;
   box-shadow: var(--shadow);
-  flex: 0 0 220px;
+  flex: 0 0 260px;
   user-select: none;
 }
 
