@@ -492,16 +492,16 @@ section {
 }
 
 .service-icon {
-  width: 60px;
-  height: 60px;
-  background: transparent;
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 14px;
-  overflow: hidden;
-  transition: transform 0.3s ease;
+    width: 90px;
+    height: 90px;
+    background: transparent;
+    border-radius: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 14px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
 }
 
 .service-icon img {
