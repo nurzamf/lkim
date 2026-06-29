@@ -1201,17 +1201,17 @@ section {
 }
 
 .agency-logo-box {
-  width: 130px;
-  height: 110px;
-  background: #fff;
-  border-radius: var(--radius-card);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: var(--shadow);
-  transition: all 0.2s;
-  overflow: hidden;
-  border: 1.5px solid var(--gray-200);
+    width: 190px;
+    height: 150px;
+    background: #fff;
+    border-radius: var(--radius-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    transition: all 0.2s;
+    overflow: hidden;
+    border: 1.5px solid var(--gray-200);
 }
 
 .agency-item:hover .agency-logo-box {
@@ -1220,9 +1220,9 @@ section {
 }
 
 .agency-logo-box img {
-  width: 80px;
-  height: 70px;
-  object-fit: contain;
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
 }
 
 .agency-name {
