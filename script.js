@@ -15,6 +15,7 @@ function navigate(page) {
     'services': 'services',
     'programmes': 'programmes',
     'news': 'media',
+    'news-detail': 'media',
     'contact': 'contact'
   };
   const activeNavKey = pageToNavMap[page] || page;

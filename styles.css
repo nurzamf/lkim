@@ -494,21 +494,27 @@ section {
 .service-icon {
   width: 60px;
   height: 60px;
-  background: var(--off-white);
+  background: transparent;
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 14px;
-  transition: background 0.2s;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-.service-card:hover .service-icon {
-  background: var(--blue);
+.service-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  transition: transform 0.3s ease;
+  display: block;
 }
 
-.service-card:hover .service-icon svg {
-  stroke: #fff;
+.service-card:hover .service-icon img {
+  transform: scale(1.12);
 }
 
 .service-icon svg {
@@ -1551,21 +1557,27 @@ footer {
 .sf-icon {
   width: 64px;
   height: 64px;
-  background: var(--off-white);
+  background: transparent;
   border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 auto 16px;
-  transition: background 0.2s;
+  overflow: hidden;
+  transition: transform 0.3s ease;
 }
 
-.service-full-card:hover .sf-icon {
-  background: var(--blue);
+.sf-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 14px;
+  transition: transform 0.3s ease;
+  display: block;
 }
 
-.service-full-card:hover .sf-icon svg {
-  stroke: #fff;
+.service-full-card:hover .sf-icon img {
+  transform: scale(1.12);
 }
 
 .sf-icon svg {
@@ -2340,5 +2352,59 @@ footer {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(1, 82, 169, 0.35);
 }
+
+/* News Detail Page Styles */
+@media (max-width: 1024px) {
+  .news-detail-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+}
+
+.recent-news-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.recent-news-item:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.recent-news-item img {
+  width: 70px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.recent-news-body {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.recent-news-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #011E3D;
+  line-height: 1.4;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.recent-news-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
 
 

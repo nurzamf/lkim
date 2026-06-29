@@ -172,35 +172,35 @@
       <div class="services-grid">
         <div class="service-card" onclick="navigate('services');showNotif('Opening Licensing…')">
           <div class="service-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/><circle cx="16" cy="6" r="1.2" fill="var(--blue)"/></svg>
+            <img src="/src/assets/images/licensing_icon_1782699145873.jpg" alt="Licensing" referrerPolicy="no-referrer">
           </div>
           <div class="service-title">LICENSING</div>
           <div class="service-desc">Apply or renew fishing / aquaculture license</div>
         </div>
         <div class="service-card" onclick="showNotif('Opening Industry Info…')">
           <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            <img src="https://picsum.photos/120/120?random=101" alt="Industry Info" referrerPolicy="no-referrer">
           </div>
           <div class="service-title">INDUSTRY INFO</div>
           <div class="service-desc">Fish prices, reports, market publication</div>
         </div>
         <div class="service-card" onclick="navigate('programmes');showNotif('Opening Funding &amp; Programmes…')">
           <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+            <img src="https://picsum.photos/120/120?random=102" alt="Funding & Programmes" referrerPolicy="no-referrer">
           </div>
           <div class="service-title">FUNDING &amp; PROGRAMMES</div>
           <div class="service-desc">Fisheries grants, KUNITA and more</div>
         </div>
         <div class="service-card" onclick="showNotif('Opening Facilities &amp; Offices…')">
           <div class="service-icon">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <img src="https://picsum.photos/120/120?random=103" alt="Facilities & Offices" referrerPolicy="no-referrer">
           </div>
           <div class="service-title">FACILITIES &amp; OFFICES</div>
           <div class="service-desc">Fisheries complexes, jetties and state offices</div>
         </div>
         <div class="service-card" onclick="showNotif('Opening Online Services…')">
           <div class="service-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            <img src="https://picsum.photos/120/120?random=104" alt="Online Services" referrerPolicy="no-referrer">
           </div>
           <div class="service-title">ONLINE SERVICES</div>
           <div class="service-desc">e-Pendaratan, declaration and more</div>
@@ -394,7 +394,7 @@
         <p class="section-sub">Latest updates from LKIM and the fisheries industry.</p>
       </div>
       <div class="news-grid">
-        <div class="news-featured" onclick="navigate('news')">
+        <div class="news-featured" onclick="viewNewsDetail(3)">
           <div class="news-feat-img"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=600&auto=format&fit=crop" alt="News"></div>
           <div class="news-feat-body">
             <div class="news-feat-title">Cadangan menaik taraf pendawaian elektrik dan lampu dekoratif D' Laman LKIM Taman Ekspo Pertanian Malaysia Serdang (MAEPS), Selangor.</div>
@@ -403,19 +403,19 @@
         </div>
         <div class="news-list">
           <div class="news-items-wrap">
-            <div class="news-item" onclick="navigate('news')">
+            <div class="news-item" onclick="viewNewsDetail(0)">
               <div class="news-item-img"><img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=150&auto=format&fit=crop" alt="News"></div>
               <div class="news-item-body">
                 <div class="news-item-title">Statement of Quotation Offer for the Sale of Used Vehicles LKIM(H): S04/2025 – Reinvitation</div>
               </div>
             </div>
-            <div class="news-item" onclick="navigate('news')">
+            <div class="news-item" onclick="viewNewsDetail(1)">
               <div class="news-item-img"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=150&auto=format&fit=crop" alt="News"></div>
               <div class="news-item-body">
                 <div class="news-item-title">Sebutharga LKIM Ibu Pejabat (LKIM:S15/2026) Cadangan kerja-kerja pembinaan bagi Seksyen Sivil</div>
               </div>
             </div>
-            <div class="news-item" onclick="navigate('news')">
+            <div class="news-item" onclick="viewNewsDetail(2)">
               <div class="news-item-img"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=150&auto=format&fit=crop" alt="News"></div>
               <div class="news-item-body">
                 <div class="news-item-title">Sebutharga LKIM bagi perkhidmatan penyewaan peralatan termasuk pemasangan</div>
@@ -502,62 +502,62 @@
       </div>
       <div class="services-full-grid" id="servicesGrid">
         <div class="service-full-card" data-cat="licensing" onclick="showNotif('Opening Fishing License Application…')">
-          <div class="sf-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div>
+          <div class="sf-icon"><img src="/src/assets/images/licensing_icon_1782699145873.jpg" alt="Fishing License" referrerPolicy="no-referrer"></div>
           <div class="sf-title">Fishing License (New)</div>
           <div class="sf-desc">Apply for a new commercial fishing license. Processing time: 14 working days.</div>
         </div>
         <div class="service-full-card" data-cat="licensing" onclick="showNotif('Opening License Renewal…')">
-          <div class="sf-icon"><svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></div>
+          <div class="sf-icon"><img src="https://picsum.photos/120/120?random=110" alt="License Renewal" referrerPolicy="no-referrer"></div>
           <div class="sf-title">License Renewal</div>
           <div class="sf-desc">Renew your existing fishing or aquaculture license online.</div>
         </div>
         <div class="service-full-card" data-cat="licensing" onclick="showNotif('Opening Aquaculture License…')">
-          <div class="sf-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></svg></div>
+          <div class="sf-icon"><img src="https://picsum.photos/120/120?random=111" alt="Aquaculture License" referrerPolicy="no-referrer"></div>
           <div class="sf-title">Aquaculture License</div>
           <div class="sf-desc">Register and license your aquaculture farm operation.</div>
         </div>
         <div class="service-full-card" data-cat="financial" onclick="navigate('programmes');showNotif('Opening e-Dana Grant…')">
-          <div class="sf-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
+          <div class="sf-icon"><img src="https://picsum.photos/120/120?random=112" alt="e-Dana Grant" referrerPolicy="no-referrer"></div>
           <div class="sf-title">e-Dana Grant Application</div>
           <div class="sf-desc">Apply for fisheries financial assistance grants online.</div>
         </div>
         <div class="service-full-card" data-cat="financial" onclick="showNotif('Opening Subsidy Registration…')">
-          <div class="sf-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="sf-icon"><img src="https://picsum.photos/120/120?random=113" alt="Subsidy Registration" referrerPolicy="no-referrer"></div>
           <div class="sf-title">Subsidy Registration</div>
           <div class="sf-desc">Register for diesel subsidy and other fishermen welfare programmes.</div>
         </div>
         <div class="service-full-card" data-cat="financial" onclick="showNotif('Opening Micro-Finance…')">
-          <div class="sf-icon"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+          <div class="sf-icon"><img src="https://picsum.photos/120/120?random=114" alt="Micro-Finance" referrerPolicy="no-referrer"></div>
           <div class="sf-title">Micro-Finance Scheme</div>
           <div class="sf-desc">Low-interest micro-financing for small-scale fishing operators.</div>
         </div>
         <div class="service-full-card" data-cat="information" onclick="showNotif('Opening Fish Price Index…')">
-          <div class="sf-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+          <div class="sf-icon"><img src="https://picsum.photos/120/120?random=115" alt="Fish Price Index" referrerPolicy="no-referrer"></div>
           <div class="sf-title">Fish Price Index</div>
           <div class="sf-desc">Daily fish price data from LKIM complexes nationwide.</div>
         </div>
         <div class="service-full-card" data-cat="information" onclick="showNotif('Opening Market Reports…')">
-          <div class="sf-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
+          <div class="sf-icon"><img src="https://picsum.photos/120/120?random=116" alt="Market Reports" referrerPolicy="no-referrer"></div>
           <div class="sf-title">Market Reports</div>
           <div class="sf-desc">Download weekly and monthly fisheries market reports.</div>
         </div>
         <div class="service-full-card" data-cat="infrastructure" onclick="showNotif('Opening Jetty Booking…')">
-          <div class="sf-icon"><svg viewBox="0 0 24 24"><path d="M3 17l9-14 9 14"/><path d="M3 17h18"/></svg></div>
+          <div class="sf-icon"><img src="https://picsum.photos/120/120?random=117" alt="Jetty Booking" referrerPolicy="no-referrer"></div>
           <div class="sf-title">Jetty Booking</div>
           <div class="sf-desc">Reserve berthing and landing space at LKIM jetties.</div>
         </div>
         <div class="service-full-card" data-cat="infrastructure" onclick="showNotif('Opening Cold Storage Booking…')">
-          <div class="sf-icon"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg></div>
+          <div class="sf-icon"><img src="https://picsum.photos/120/120?random=118" alt="Cold Storage Booking" referrerPolicy="no-referrer"></div>
           <div class="sf-title">Cold Storage Booking</div>
           <div class="sf-desc">Book cold storage facilities at LKIM complexes.</div>
         </div>
         <div class="service-full-card" data-cat="online" onclick="showNotif('Opening e-Pendaratan…')">
-          <div class="sf-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></div>
+          <div class="sf-icon"><img src="https://picsum.photos/120/120?random=119" alt="e-Pendaratan" referrerPolicy="no-referrer"></div>
           <div class="sf-title">e-Pendaratan</div>
           <div class="sf-desc">Submit your daily fish landing declaration online.</div>
         </div>
         <div class="service-full-card" data-cat="online" onclick="showNotif('Opening MyLKIM App…')">
-          <div class="sf-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
+          <div class="sf-icon"><img src="https://picsum.photos/120/120?random=120" alt="MyLKIM App" referrerPolicy="no-referrer"></div>
           <div class="sf-title">MyLKIM Mobile App</div>
           <div class="sf-desc">Download the LKIM app for iOS and Android.</div>
         </div>
@@ -661,7 +661,7 @@
         <button class="filter-btn" onclick="filterNews(this,'announcement')">Announcements</button>
       </div>
       <div class="news-full-grid" id="newsGrid">
-        <div class="news-full-card" data-ncat="tender" onclick="showNotif('Reading tender notice…')">
+        <div class="news-full-card" data-ncat="tender" onclick="viewNewsDetail(0)">
           <div class="news-full-img"><img src="https://picsum.photos/400/178?random=80" alt="News"></div>
           <div class="news-full-body">
             <div class="news-meta"><span class="news-tag-pill">Tender</span><span class="news-date">20 Jun 2025</span></div>
@@ -669,7 +669,7 @@
             <div class="news-full-excerpt">LKIM invites quotations for the sale of used government vehicles. Submissions accepted until 5 July 2025.</div>
           </div>
         </div>
-        <div class="news-full-card" data-ncat="tender" onclick="showNotif('Reading tender notice…')">
+        <div class="news-full-card" data-ncat="tender" onclick="viewNewsDetail(1)">
           <div class="news-full-img"><img src="https://picsum.photos/400/178?random=81" alt="News"></div>
           <div class="news-full-body">
             <div class="news-meta"><span class="news-tag-pill">Tender</span><span class="news-date">18 Jun 2025</span></div>
@@ -677,7 +677,7 @@
             <div class="news-full-excerpt">Civil construction works at LKIM headquarters. Interested contractors may obtain tender documents from the Procurement Unit.</div>
           </div>
         </div>
-        <div class="news-full-card" data-ncat="announcement" onclick="showNotif('Reading announcement…')">
+        <div class="news-full-card" data-ncat="announcement" onclick="viewNewsDetail(2)">
           <div class="news-full-img"><img src="https://picsum.photos/400/178?random=82" alt="News"></div>
           <div class="news-full-body">
             <div class="news-meta"><span class="news-tag-pill" style="color:var(--teal);">Announcement</span><span class="news-date">15 Jun 2025</span></div>
@@ -685,7 +685,7 @@
             <div class="news-full-excerpt">LKIM invites quotations for equipment rental services including installation for state offices.</div>
           </div>
         </div>
-        <div class="news-full-card" data-ncat="news" onclick="showNotif('Reading article…')">
+        <div class="news-full-card" data-ncat="news" onclick="viewNewsDetail(3)">
           <div class="news-full-img"><img src="https://picsum.photos/400/178?random=83" alt="News"></div>
           <div class="news-full-body">
             <div class="news-meta"><span class="news-tag-pill" style="color:#16a34a;">News</span><span class="news-date">10 Jun 2025</span></div>
@@ -693,7 +693,7 @@
             <div class="news-full-excerpt">Upgrading of electrical installations and decorative lighting at LKIM's pavilion for MAHA 2026 is underway.</div>
           </div>
         </div>
-        <div class="news-full-card" data-ncat="news" onclick="showNotif('Reading article…')">
+        <div class="news-full-card" data-ncat="news" onclick="viewNewsDetail(4)">
           <div class="news-full-img"><img src="https://picsum.photos/400/178?random=84" alt="News"></div>
           <div class="news-full-body">
             <div class="news-meta"><span class="news-tag-pill" style="color:#16a34a;">News</span><span class="news-date">5 Jun 2025</span></div>
@@ -701,12 +701,75 @@
             <div class="news-full-excerpt">The new e-Pendaratan system goes live in all 186 LKIM complexes, enabling real-time catch data reporting.</div>
           </div>
         </div>
-        <div class="news-full-card" data-ncat="announcement" onclick="showNotif('Reading announcement…')">
+        <div class="news-full-card" data-ncat="announcement" onclick="viewNewsDetail(5)">
           <div class="news-full-img"><img src="https://picsum.photos/400/178?random=85" alt="News"></div>
           <div class="news-full-body">
             <div class="news-meta"><span class="news-tag-pill" style="color:var(--teal);">Announcement</span><span class="news-date">1 Jun 2025</span></div>
             <div class="news-full-title">Notis Permohonan Program e-Dana Suku Ketiga 2025 Kini Dibuka</div>
             <div class="news-full-excerpt">Applications for the third quarter e-Dana Fisheries Grant are now open. Eligible fishermen may apply online.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════════════ NEWS DETAIL PAGE ═══════════════════════════════════ -->
+<div class="page" id="page-news-detail">
+  <div class="page-hero" style="padding: 40px 0 30px;">
+    <div class="page-hero-inner">
+      <div class="breadcrumb">
+        <span onclick="navigate('home')" style="cursor:pointer;">Home</span>
+        <span class="sep">›</span>
+        <span onclick="navigate('news')" style="cursor:pointer;">News &amp; Announcements</span>
+        <span class="sep">›</span>
+        <span id="newsDetailBreadcrumbTitle" style="max-width: 300px; display: inline-block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; vertical-align: bottom;">Article Detail</span>
+      </div>
+    </div>
+  </div>
+  <section style="background: #ffffff; padding: 40px 0 80px;">
+    <div class="section-inner">
+      <div class="news-detail-grid" style="display: grid; grid-template-columns: 2.3fr 1fr; gap: 40px;">
+        <!-- Main Content Area -->
+        <div class="news-detail-main">
+          <div style="margin-bottom: 20px;">
+            <span class="news-tag-pill" id="newsDetailTag" style="font-size: 13px; font-weight: 700; padding: 6px 14px; background: rgba(1, 82, 169, 0.08); border-radius: 6px;">News</span>
+            <span class="news-date" id="newsDetailDate" style="margin-left: 12px; color: var(--text-muted); font-size: 14px;">10 Jun 2025</span>
+          </div>
+          <h1 id="newsDetailTitle" style="font-size: 30px; font-weight: 800; color: #011E3D; line-height: 1.35; margin-bottom: 24px; text-transform: none; text-align: left; font-family: var(--font-sans);">News Title</h1>
+          
+          <div class="news-detail-img-wrap" style="border-radius: 16px; overflow: hidden; margin-bottom: 30px; box-shadow: var(--shadow-sm);">
+            <img id="newsDetailImage" src="" alt="Featured News Image" style="width: 100%; max-height: 440px; object-fit: cover;" referrerPolicy="no-referrer">
+          </div>
+          
+          <div class="news-detail-content-body" id="newsDetailContent" style="font-size: 15.5px; line-height: 1.8; color: #374151; margin-bottom: 40px; text-align: left;">
+            <!-- Dynamic Content -->
+          </div>
+          
+          <div style="border-top: 1px solid #e5e7eb; padding-top: 30px; margin-top: 40px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+            <button class="btn btn-primary" onclick="navigate('news')" style="padding: 12px 24px; font-size: 14px; display: flex; align-items: center; gap: 8px;">
+              <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round;"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+              Back to News
+            </button>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span style="font-weight: 700; color: #011E3D; font-size: 14px;">Share:</span>
+              <button class="social-icon-btn" onclick="showNotif('Shared to Facebook')" style="width: 32px; height: 32px; border-radius: 50%; background: #0152A9; color: #ffffff; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; transition: all 0.2s ease;">
+                <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: currentColor;"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+              </button>
+              <button class="social-icon-btn" onclick="showNotif('Shared to X')" style="width: 32px; height: 32px; border-radius: 50%; background: #0152A9; color: #ffffff; display: flex; align-items: center; justify-content: center; border: none; cursor: pointer; transition: all 0.2s ease;">
+                <svg viewBox="0 0 24 24" style="width: 12px; height: 12px; fill: currentColor;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Sidebar / Recent News -->
+        <div class="news-detail-sidebar">
+          <div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 16px; padding: 24px; position: sticky; top: 100px; text-align: left;">
+            <h3 style="font-size: 17px; font-weight: 800; color: #011E3D; margin-bottom: 20px; border-left: 4px solid var(--blue); padding-left: 10px; margin-top: 0; text-transform: uppercase; font-family: var(--font-sans);">Other Updates</h3>
+            <div id="newsDetailRecentList" style="display: flex; flex-direction: column; gap: 16px;">
+              <!-- Dynamic Recent List -->
+            </div>
           </div>
         </div>
       </div>
