@@ -372,7 +372,7 @@ nav {
   align-items: center;
   /* Premium Dark Black/Navy overlay for excellent legibility on Unsplash hero image */
   background: linear-gradient(rgba(10, 20, 42, 0.75), rgba(10, 20, 42, 0.6)), 
-              url('https://images.unsplash.com/photo-1596022312589-f400f7ed7bc8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat;
+              url('src/assets/images/lkim-hero-2026.png') center/cover no-repeat;
 }
 
 .hero-inner {
@@ -2273,7 +2273,7 @@ footer {
 .hero {
     color: #fff !important;
     padding: 190px 0 110px !important;
-    background: linear-gradient(180deg, rgba(0, 15, 35, 0.75) 0%, rgba(0, 8, 20, 0.55) 100%), url(https://images.unsplash.com/photo-1596022312589-f400f7ed7bc8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D) center / cover no-repeat !important;
+    background: linear-gradient(180deg, rgba(0, 15, 35, 0.75) 0%, rgba(0, 8, 20, 0.55) 100%), url(src/assets/images/lkim-hero-2026.png) center / cover no-repeat !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
